@@ -5,9 +5,10 @@ from django.contrib import admin
 
 # Register your models here.
 from django.contrib import admin
-from main.models import TodoList,Todotasks
+from main.models import Book,Journal, BookJournalBase
 
 # Register your models here.
-admin.site.register(TodoList)
-admin.site.register(Todotasks)
+admin.site.register(Book)
+admin.site.register(Journal)
+admin.site.register(BookJournalBase)
 
