@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'todo.css' %}">
+</head>
+<body>
+    <header>
+        TODO
+    </header>
+    <div class="con">
+        <button class="addtask">add task</button>
+        <h1 class="tasksinlist">Tasks in "List 1"</h1>
+        <table>
+            <tr class="line">
+                <td>Task</td>
+                <td>Created</td>
+                <td>Due on</td>
+                <td>Owner</td>
+                <td>Mark</td>
+            </tr>
+            {% for todotask in todotasks %}
+                {% block row %}
+                    {% if not todotask.mark %}
+                                <tr class="line sp">
+                                    <td style="color: deepskyblue"> {{ todotask.taskname }}</td>
+                                    <td> {{ todotask.created }}</td>
+                                    <td> {{ todotask.due_on }}</td>
+                                    <td> {{ todotask.owner }}</td>
+                                    <td> <button class="mark">Done</button> </td>
+                                </tr>
+                            {% endif %}
+                    {% endblock %}
+            {% endfor %}
+        </table>
+    {% block switch %}
+        <button class="inorcompleted">View completed tasks</button>
+    {% endblock %}
+    <button class="delete">Delete this list</button>
+    </div>
+</body>
+</html>
